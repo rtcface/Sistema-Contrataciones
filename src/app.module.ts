@@ -7,6 +7,7 @@ import { upperDirectiveTransformer } from './common/directives/upper-case.direct
 import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       },
     }),
     MongooseModule.forRoot(process.env.MONGODB),
+    AuthModule,
     UsersModule,
   ],
   providers: [],

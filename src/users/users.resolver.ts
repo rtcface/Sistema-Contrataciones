@@ -12,7 +12,7 @@ const pubSub = new PubSub();
 export class UsersResolver {
   constructor(private readonly userService: UsersService) {}
 
-  @Query((returns) => [User])
+  /* @Query((returns) => [User])
   async getUsers(): Promise<User[]> {
     const user = await this.userService.getUsers();
     if (!user) {
@@ -20,13 +20,9 @@ export class UsersResolver {
     }
     return user;
   }
+ */
 
-  @Mutation((returns) => User)
-  async addUser(@Args('newUserData') newUserData: NewUserInput): Promise<User> {
-    const recipe = await this.userService.create(newUserData);
-    pubSub.publish('recipeAdded', { recipeAdded: recipe });
-    return recipe;
-  }
+  getUsers() {}
 
   @Subscription((returns) => User)
   UserAdded() {

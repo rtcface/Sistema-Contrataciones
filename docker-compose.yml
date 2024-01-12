@@ -13,7 +13,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: sa
       MONGO_INITDB_ROOT_PASSWORD: 123456
-      MONGO_INITDB_DATABASE: contrataciones
+      MONGO_INITDB_DATABASE: Contrataciones
 
   mongo-express:
     image: mongo-express:1.0.0-alpha.4

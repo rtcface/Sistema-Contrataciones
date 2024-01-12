@@ -7,6 +7,7 @@ export class User {
   readonly id: string;
 
   @Directive('@upper')
+  @Field()
   readonly name: string;
 
   @Field()
@@ -14,7 +15,7 @@ export class User {
   password: string;
 
   @Field()
-  readonly creationDate: Date;
+  readonly createdAt: Date;
 
   @Field({ nullable: true })
   readonly avatar?: string;

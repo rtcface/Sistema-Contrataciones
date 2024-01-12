@@ -25,6 +25,7 @@ export class UsersService {
 
     return listUsers;
   }
+
   async updateUser(user: UpdateUserInput): Promise<User> {
     const { password } = user;
     user.password = await this.hashePassword(password);
@@ -41,8 +42,15 @@ export class UsersService {
     );
   }
 
-  private async hashePassword(password: string): Promise<string> {
+  async hashePassword(password: string): Promise<string> {
     const salt = await bcrypt.genSaltSync(10);
     return await bcrypt.hash(password, salt);
+  }
+
+  async findUserByEmailGeneral(email: string): Promise<User> {
+    return await this.usersModel.findOne({ email: email });
+  }
+  async findUserByEmail(email: string): Promise<User> {
+    return await this.usersModel.findOne({ email: email, status: 'active' });
   }
 }
